@@ -1,0 +1,45 @@
+<div class="mypost-container">
+    <div class="mypost-title fonte">
+        <h1>MEUS <span>POSTS</span></h1>
+    </div>
+
+    <abbr title="Crie um POST!" class="post-abbreviation">
+        <div class="mypost-create-post-container">
+            <a href="/posts/criar" class="fonte">
+                <div class="mypost-create-post">+</div>
+            </a>
+        </div>  
+    </abbr>
+
+</div>
+
+    <section class="posts-container"> 
+            {{#if posts}}
+                <ul class="posts-area">
+                    {{#each posts}}
+                        <li class="post-individual fonte">
+                                <h2>{{this.title}}</h2>
+                                <p>{{this.game}}</p>
+
+                                <div class="utilidades-buttons">
+
+                                    <a href="/posts/edit/{{this.id}}"><i class="fa-solid fa-pen" style="color: #ffffff;"></i></a>
+
+                                    <form action="/posts/remove" method="POST">
+                                        <input type="hidden" name="id" value="{{this.id}}">
+
+                                            <button type="submit" class="post-trash"> <i class="fa-solid fa-trash" style="color: #ffffff;"></i></button>
+                                    </form>
+                                </div>
+                        </li>
+                    {{/each}}
+                </ul>
+            {{/if}}    
+    </section>
+
+{{#if emptyPosts}}
+    <div class="sem-post fonte">
+        <p>Ainda não há nenhum post seu, comece a criar <a href="/posts/criar">POR AQUI!</a></p>
+    </div>
+{{/if}} 
+
